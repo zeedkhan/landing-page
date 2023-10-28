@@ -8,6 +8,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      height: {
+        '104': '26rem'
+      },
       fontFamily: {
         display: ["var(--font-sf)", "system-ui", "sans-serif"],
         default: ["var(--font-inter)", "system-ui", "sans-serif"],
