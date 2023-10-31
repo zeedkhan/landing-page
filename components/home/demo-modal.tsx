@@ -38,7 +38,7 @@ const DemoModal = ({
 }) => {
   return (
     <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
-      <figure className="rounded-t-xl w-full overflow-hidden md:max-w-md 2xl md:border md:border-gray-100 md:shadow-xl">
+      <figure className="rounded-t-xl w-full md:max-w-md 2xl md:border md:border-gray-100 md:shadow-xl">
         <div className="w-full relative">
           <Image
             src="/people-generating-images-using-artificial-intelligence-laptop.jpg"

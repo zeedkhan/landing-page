@@ -34,16 +34,17 @@ const ChatbotModal = ({
 }) => {
   return (
     <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
-      <figure className="rounded-t-xl w-full overflow-hidden md:max-w-md 2xl md:border md:border-gray-100 md:shadow-xl">
+      <figure className="h-full rounded-t-xl w-full md:max-w-md 2xl md:border md:border-gray-100 md:shadow-xl">
         <div className="w-full relative">
           <Image
+            className="rounded-t-xl"
             src="/representation-user-experience-interface-design-smartphone.jpg"
             alt="Representation user experience interface design smartphone"
             width={1000}
             height={1000}
           />
         </div>
-        <figcaption className="flex flex-col items-center justify-center space-y-3 bg-white px-4 pt-4 pb-6 text-center md:px-16">
+        <figcaption className="h-full flex flex-col items-center justify-center space-y-3 bg-white px-4 pt-4 pb-6 text-center md:px-16">
           <h3 className="font-display text-2xl font-bold">Feature Highlights</h3>
           <p className="text-sm text-gray-500">
             AI InfoBot is here to showcase the key features of our AI services. It can explain how our products work and why they{`'`}re beneficial for your business. Feel free to ask about specific features you{`'`}re interested in!          </p>
