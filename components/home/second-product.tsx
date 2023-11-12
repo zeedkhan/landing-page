@@ -6,18 +6,18 @@ import Image from "next/image";
 export default function SecondProduct() {
   const { DemoModal, setShowDemoModal } = useChatbotModal();
   return (
-    <>
-      <div className="w-full relative cursor-pointer"
+    <div className="w-full h-[18rem]">
+      <div className="relative w-full cursor-pointer h-full "
         onClick={() => setShowDemoModal(true)}>
         <Image
-          src="/representation-user-experience-interface-design-smartphone.jpg"
-          alt="Representation user experience interface design smartphone"
-          width={1000}
-          height={1000}
+          layout="fill"
+          style={{ objectFit: "cover", backgroundPosition: "center" }}
+          src="/service-2.jpg"
+          alt="People generating images using artificial intelligence laptop"
         />
 
       </div>
       <DemoModal />
-    </>
+    </div>
   );
 }

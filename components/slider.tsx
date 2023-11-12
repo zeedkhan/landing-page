@@ -4,7 +4,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { serviceColumn, services } from "@/lib/mock-service";
 import { Table, Theme } from "@radix-ui/themes";
-import {useState} from "react";
+import { useState } from "react";
+import Image from "next/image";
 
 const helperRender = (type: any): any => {
 	if (Array.isArray(type)) {
@@ -17,7 +18,7 @@ const helperRender = (type: any): any => {
 const Slider = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
 
-	const handleSlideChange = (index : number) => {
+	const handleSlideChange = (index: number) => {
 		setCurrentSlide(index);
 	}
 
@@ -29,21 +30,38 @@ const Slider = () => {
 				infiniteLoop={true}
 				dynamicHeight={false}
 				autoPlay={true}
-				
+				swipeable={true}
+				renderThumbs={() =>
+					["/service-1.jpg", "/service-2.jpg", "/service-1.jpg", "/service-2.jpg", "/service-3.jpg"].map((img, idx) => (
+						<div key={idx} className="w-full h-20 relative">
+							<Image
+								src={img}
+								layout="fill"
+								objectFit="contain"
+								alt="logo"
+							></Image>
+						</div>
+					))
+				}
 				onChange={handleSlideChange}
 				className="z-10"
 			>
-				<div className=" w-full max-h-[800px] ">
-					<img
+				<div className="w-full max-h-[800px] ">
+					<Image
+						width={500}
+						height={500}
+						layout="responsive"
 						src="/service-1.jpg"
 						alt="image1"
 					/>
 					<p className="legend">20ft Standard Container</p>
 				</div>
 
-				<div className=" w-full max-h-[800px] ">
-					<img
-						src="/service-2.jpg"
+				<div className="w-full max-h-[800px] ">
+					<Image
+						width={500}
+						height={500}
+						layout="responsive" src="/service-2.jpg"
 						alt="image2"
 					/>
 					<div className="legend">
@@ -54,24 +72,30 @@ const Slider = () => {
 					</div>
 				</div>
 
-				<div className=" w-full max-h-[800px]">
-					<img
-						src="/service-1.jpg"
+				<div className="relative w-full max-h-[800px]">
+					<Image
+						width={500}
+						height={500}
+						layout="responsive" src="/service-1.jpg"
 						alt="image3"
 					/>
 					<p className="legend">40ft High Cube Container</p>
 				</div>
 
-				<div className=" w-full max-h-[800px]">
-					<img
-						src="/service-2.jpg"
+				<div className="relative w-full max-h-[800px]">
+					<Image
+						width={500}
+						height={500}
+						layout="responsive" src="/service-2.jpg"
 						alt="image3"
 					/>
 					<p className="legend">Refrigerated Container</p>
 				</div>
-				<div className=" w-full max-h-[800px]">
-					<img
-						src="/service-3.jpg"
+				<div className="relative w-full max-h-[800px]">
+					<Image
+						width={500}
+						height={500}
+						layout="responsive" src="/service-3.jpg"
 						alt="image3"
 					/>
 					<p className="legend">Flat Rack Container	</p>

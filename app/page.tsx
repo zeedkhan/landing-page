@@ -1,9 +1,9 @@
-// import Card from "@/components/home/card";
+import Card from "@/components/home/card";
 import { truncate } from "@/lib/utils";
 import { ReactElement } from "react-markdown/lib/react-markdown";
-// import FirstProduct from "@/components/home/first-product";
-// import Performance from "@/components/home/performace";
-// import SecondProduct from "@/components/home/second-product";
+import FirstProduct from "@/components/home/first-product";
+import Performance from "@/components/home/performace";
+import SecondProduct from "@/components/home/second-product";
 import Image from "next/image";
 import Contact from "@/components/shared/contact";
 import Slider from "@/components/slider";
@@ -118,12 +118,8 @@ export default async function Home() {
       </div>
 
 
-      {/* <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0"> */}
-      <div className="my-10 w-full max-w-screen-xl animate-fade-up px-5 xl:px-0">
-
-        <Slider />
-
-        {/* {features.map(({ title, description, demo, large, extraClass }) => (
+      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+        {features.map(({ title, description, demo, large, extraClass }) => (
           <Card
             key={title}
             title={title}
@@ -142,7 +138,12 @@ export default async function Home() {
             }
             large={large}
           />
-        ))} */}
+        ))}
+      </div>
+
+      <div className="my-10 w-full max-w-screen-xl animate-fade-up px-5 xl:px-0">
+
+        <Slider />
       </div>
 
     </>
