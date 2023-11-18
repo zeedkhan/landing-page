@@ -1,0 +1,119 @@
+{
+    "IndexPage": {
+        "title": "Ocean cargo is the most famous shipping",
+        "subHead": "Ocean cargo is the most famous shipping method when we talk about international trade from/to world.",
+        "contact": "Instantly contact us",
+        "serviceHead": "Ocean freight shipping is the method of transporting containerised cargo loaded onto vessels by sea.",
+        "serviceDetails": "Over 90% of all the world’s trade is carried by sea. If you want to ship your freight around the world, ocean freight is the most convenient option.",
+        "service1": {
+            "head": "Smart Home Assistant",
+            "coverImage": {
+                "url": "/service-1.jpg",
+                "alt": "Image - 1"
+            },
+            "desc": "The SmartHome Assistant is your all-in-one solution for transforming your traditional home into a cutting-edge, intelligent living space. Our AI-powered system seamlessly integrates with your home's devices and appliances to create a smart, efficient, and personalized environment. Whether you want to control your lights, adjust your thermostat, secure your home, or manage your entertainment system, the SmartHome Assistant does it all.",
+            "img": {
+                "url": "/service-1.jpg",
+                "alt": "Image - 1"
+            },
+            "list": [
+                {
+                    "head": "Voice Control",
+                    "text": "Use natural language commands to control your entire home."
+                },
+                {
+                    "head": "Energy Efficiency",
+                    "text": "Optimize energy usage and save on utility bills with intelligent heating, cooling, and lighting management."
+                },
+                {
+                    "head": "Security",
+                    "text": "Monitor your home's security with AI-driven surveillance and instant alerts."
+                },
+                {
+                    "head": "Entertainment Hub",
+                    "text": "Manage your music, movies, and streaming services for the ultimate entertainment experience."
+                }
+            ]
+        },
+        "mockSEO": {
+            "head": "AI-Optimized SEO Analyzer",
+            "desc": "Our AI-Optimized SEO Analyzer is a powerful tool designed to supercharge your website's search engine optimization (SEO) and overall web performance. With the ever-changing landscape of search engine algorithms, it's essential to have a competitive edge in digital marketing. Our AI-driven solution offers a comprehensive analysis of your website and provides actionable insights to boost your search rankings and enhance user experience.",
+            "list": [
+                {
+                    "head": "Keyword Optimization",
+                    "text": "Our AI engine identifies the most relevant keywords for your content and suggests keyword placement to improve search engine rankings."
+                },
+                {
+                    "head": "Content Recommendations",
+                    "text": "Receive real-time suggestions for creating high-quality, SEO-friendly content that resonates with your target audience."
+                },
+                {
+                    "head": "Performance Enhancement",
+                    "text": "Identify and rectify web performance issues, including site speed, mobile-friendliness, and security."
+                },
+                {
+                    "head": "Customized Strategies",
+                    "text": "Generate personalized SEO and content strategies based on your niche and target audience."
+                }
+            ]
+        },
+        "service2": {
+            "head": "Feature Highlights",
+            "coverImage": {
+                "url": "/service-2.jpg",
+                "alt": "Image - 2"
+            },
+            "img": {
+                "url": "/service-2.jpg",
+                "alt": "Image - 2"
+            },
+            "desc": "AI InfoBot is here to showcase the key features of our AI services. It can explain how our products work and why they're beneficial for your business. Feel free to ask about specific features you're interested in!",
+            "list": [
+                {
+                    "head": "Voice Control",
+                    "text": "Our AI chatbot offers features like natural language processing, 24/7 availability, and personalized interactions to engage and assist your website visitors effectively."
+                },
+                {
+                    "head": "Energy Efficiency",
+                    "text": "Our AI analytics include features such as data insights, predictive analytics, and automated reporting to help you make data-driven decisions and optimize your business processes."
+                },
+                {
+                    "head": "Security",
+                    "text": "Our AI automation tools come with features like task automation, workflow optimization, and integration with various platforms to streamline your business operations and increase efficiency."
+                }
+            ]
+        },
+        "gallery": [
+            {
+                "id": 1,
+                "url": "",
+                "alt": "Image - 1",
+                "desc": "It can explain how our products work and why they're beneficial for your business. Feel free to ask about specific features you're interested in!"
+            },
+            {
+                "id": 2,
+                "url": "",
+                "alt": "Image - 2",
+                "desc": "Our AI automation tools come with features like task automation"
+            },
+            {
+                "id": 3,
+                "url": "",
+                "alt": "Image - 3",
+                "desc": "Our AI analytics include features such as data insights"
+            },
+            {
+                "id": 4,
+                "url": "",
+                "alt": "Image - 4",
+                "desc": "Our AI chatbot offers features like natural language processing"
+            },
+            {
+                "id": 5,
+                "url": "",
+                "alt": "Image - 5",
+                "desc": "Feature Highlights"
+            }
+        ]
+    }
+}
