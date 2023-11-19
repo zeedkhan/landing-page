@@ -1,19 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withNextIntl = require('next-intl/plugin')();
+
+module.exports = withNextIntl({
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["lh3.googleusercontent.com", "vercel.com"],
+    domains: ["vercel.com"],
   },
-  async redirects() {
-    return [
-      {
-        source: "/github",
-        destination: "https://github.com/steven-tey/precedent",
-        permanent: false,
-      },
-    ];
-  },
-};
-
-module.exports = nextConfig;
+}
+);

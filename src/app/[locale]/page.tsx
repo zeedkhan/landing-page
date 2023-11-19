@@ -7,26 +7,110 @@ import SecondProduct from "@/components/home/second-product";
 import Image from "next/image";
 import Contact from "@/components/shared/contact";
 import Slider from "@/components/slider";
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { Service } from "@/lib/mock-service";
+import { ContentProps } from "@/lib/locale";
 
 
-export default async function Home() {
+type Props = {
+  params: {
+    locale: string
+  }
+}
+
+interface FeatureProps {
+  title: string,
+  description: string;
+  large?: boolean;
+  extraClass?: string;
+  demo?: ReactElement;
+  content: ContentProps
+}
+
+
+export default function Home({ params: { locale } }: Props) {
+
+  unstable_setRequestLocale(locale);
+
+  const t = useTranslations("IndexPage");
+  const products = useTranslations("IndexPage.products");
+  const services = useTranslations("IndexPage.services");
+  const productT: {
+    productColumnKey: string[];
+    productsDetail: Service[];
+  } = {
+    productColumnKey: products.raw("productColumnKey"),
+    productsDetail: products.raw("productsDetail"),
+  };
+
+  const features: FeatureProps[] = [
+    {
+      title: services.raw("service1.head"),
+      description:
+        truncate(
+          services.raw("service1.desc"),
+          100
+        ),
+      extraClass: "h-fit",
+      large: true,
+      // @ts-ignore
+      content: services.raw("service1")
+    },
+    {
+      title: services.raw("mockSEO.head"),
+      description:
+        truncate(
+          services.raw("mockSEO.desc"),
+          100
+        ),
+      extraClass: "h-60",
+      // @ts-ignore
+      content: services.raw("mockSEO")
+    },
+    {
+      title: services.raw("service1.head"),
+      description:
+        truncate(
+          services.raw("service1.desc"),
+          100
+        ),
+      extraClass: "h-fit",
+      large: false,
+      // @ts-ignore
+      content: services.raw("service1")
+    },
+    {
+      title: services.raw("service2.head"),
+      description:
+        truncate(
+          services.raw("service2.desc"),
+          100
+        ),
+      extraClass: "h-fit",
+      large: true,
+      // @ts-ignore
+      content: services.raw("service2")
+    },
+  ];
+
+
   return (
     <>
-
       <div className="z-10 w-full max-w-screen-xl animate-fade-up z-10 xl:px-0 mb-10 px-5 flex flex-col space-y-4">
         <div className="flex flex-col space-y-4 mb-4">
           <h1
             className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-3xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
-            Ocean cargo is the most famous shipping
+            {t.raw('title')}
           </h1>
 
           <div
             className="animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
           >
-            <p>Ocean cargo is the most famous shipping method when we talk about international trade from/to world.</p>
+            <p>{t.raw("subHead")}</p>
           </div>
         </div>
 
@@ -64,7 +148,7 @@ export default async function Home() {
           className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-3xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-5xl md:leading-[5rem]"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
-          Instantly contact us
+          {t.raw("contact")}
         </h2>
         <Contact />
 
@@ -106,32 +190,32 @@ export default async function Home() {
           className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-3xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-5xl md:leading-[4rem]"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
-          Ocean freight shipping is the method of transporting containerised cargo loaded onto vessels by sea.
+          {t.raw("serviceHead")}
         </p>
 
         <p
           className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-2xl md:leading-[3rem]"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
         >
-          Over 90% of all the world’s trade is carried by sea. If you want to ship your freight around the world, ocean freight is the most convenient option.
+          {t.raw("serviceDetails")}
         </p>
       </div>
 
 
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {features.map(({ title, description, demo, large, extraClass }) => (
+        {features.map(({ title, description, demo, large, extraClass, content }, index) => (
           <Card
-            key={title}
+            key={title + index}
             title={title}
             description={description}
             extraClass={extraClass}
             demo={
-              title === "Smart Home Assistant" ? (
-                <FirstProduct />
-              ) : title === "AI-Optimized SEO Analyzer" ? (
-                <Performance />
-              ) : title === "AI InfoBot" ? (
-                <SecondProduct />
+              title === "Smart Home Assistant" || title === "ผู้ช่วยบ้านอัจฉริยะ" ? (
+                <FirstProduct content={content} />
+              ) : title === "AI-Optimized SEO Analyzer" || title === "เครื่องวิเคราะห์ SEO ที่เพิ่มประสิทธิภาพด้วย AI" ? (
+                <Performance content={content} />
+              ) : title === "Feature Highlights" || title === "จุดเด่นของคุณลักษณะ" ? (
+                <SecondProduct content={content} />
               ) : (
                 demo
               )
@@ -143,58 +227,9 @@ export default async function Home() {
 
       <div className="my-10 w-full max-w-screen-xl animate-fade-up px-5 xl:px-0">
 
-        <Slider />
+        <Slider products={productT} />
       </div>
 
     </>
   );
 }
-
-interface FeatureProps {
-  title: string,
-  description: string;
-  large?: boolean;
-  extraClass?: string;
-  demo?: ReactElement;
-}
-
-const features: FeatureProps[] = [
-  {
-    title: "Smart Home Assistant",
-    description:
-      truncate(
-        "The SmartHome Assistant is your all-in-one solution for transforming your traditional home into a cutting-edge, intelligent living space. Our AI-powered system seamlessly integrates with your home's devices and appliances to create a smart, efficient, and personalized environment. Whether you want to control your lights, adjust your thermostat, secure your home, or manage your entertainment system, the SmartHome Assistant does it all.",
-        100
-      ),
-    extraClass: "h-fit",
-    large: true,
-  },
-  {
-    title: "AI-Optimized SEO Analyzer",
-    description:
-      truncate(
-        "Our AI-Optimized SEO Analyzer is a powerful tool designed to supercharge your website's search engine optimization (SEO) and overall web performance. With the ever-changing landscape of search engine algorithms, it's essential to have a competitive edge in digital marketing. Our AI-driven solution offers a comprehensive analysis of your website and provides actionable insights to boost your search rankings and enhance user experience.",
-        100
-      ),
-    extraClass: "h-60",
-  },
-  {
-    title: "Smart Home Assistant",
-    description:
-      truncate(
-        "The SmartHome Assistant is your all-in-one solution for transforming your traditional home into a cutting-edge, intelligent living space. Our AI-powered system seamlessly integrates with your home's devices and appliances to create a smart, efficient, and personalized environment. Whether you want to control your lights, adjust your thermostat, secure your home, or manage your entertainment system, the SmartHome Assistant does it all.",
-        100
-      ),
-    extraClass: "h-fit",
-  },
-  {
-    title: "AI InfoBot",
-    description:
-      truncate(
-        "AI InfoBot is here to showcase the key features of our AI services. It can explain how our products work and why they're beneficial for your business. Feel free to ask about specific features you're interested in!",
-        100
-      ),
-    extraClass: "h-fit",
-    large: true,
-  },
-];

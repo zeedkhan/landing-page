@@ -10,12 +10,14 @@ export default function Card({
   demo,
   large,
   extraClass,
+ 
 }: {
   title: string;
   description: string;
   demo: ReactNode;
   large?: boolean;
   extraClass?: string;
+ 
 }) {
   return (
     <div
