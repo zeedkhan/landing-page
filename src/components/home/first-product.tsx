@@ -13,8 +13,8 @@ export default function FirstProduct({ content }: { content: ContentProps }) {
       <div className="relative w-full cursor-pointer h-full "
         onClick={() => setShowDemoModal(true)}>
         <Image
-          layout="fill"
-          style={{ objectFit: "cover", backgroundPosition: "center" }}
+          fill
+          style={{ backgroundPosition: "center", objectFit: "cover" }}
           src="/service-1.jpg"
           alt="People generating images using artificial intelligence laptop"
         />

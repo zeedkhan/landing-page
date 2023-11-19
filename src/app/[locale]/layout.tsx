@@ -8,22 +8,83 @@ import { Suspense } from "react";
 import Footer from "@/components/layout/footer";
 import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
-
+import { Metadata } from "next";
+import seoEN from "../../../messages/en.json"
+import seoTH from "../../../messages/th.json"
 
 const locales = ['en', 'th'];
 
+const env = process.env.NODE_ENV
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata = {
-  title: "Sample - Building website for your next project",
-  description:
-    "Sample is the all-in-one solution for your next project. It includes a design system, analytics, and more.",
-  metadataBase: new URL("https://www.google.com"),
-  themeColor: "#FFF",
-};
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+
+  if (params.locale === "en") {
+    return {
+      ...seoEN.SEO,
+      "robots": {
+        "index": false,
+        "follow": true,
+        "nocache": true,
+        "googleBot": {
+          "index": true,
+          "follow": false,
+          "noimageindex": true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1
+        }
+      },
+      openGraph: {
+        type: 'website',
+        url: env === "development" ? "http://localhost:3000/" : "https://landing-page-zeta-two-11.vercel.app/",
+        images: [
+          {
+            url: '/seed-jr.jpg',
+            width: 250,
+            height: 250,
+            alt: "Sample - website"
+          }
+        ],
+        ...seoEN.SEO,
+      },
+    }
+  }
+
+  return {
+    ...seoTH.SEO,
+    "robots": {
+      "index": false,
+      "follow": true,
+      "nocache": true,
+      "googleBot": {
+        "index": true,
+        "follow": false,
+        "noimageindex": true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1
+      }
+    },
+    openGraph: {
+      type: 'website',
+      url: env === "development" ? "http://localhost:3000/" : "https://landing-page-zeta-two-11.vercel.app/",
+      images: [
+        {
+          url: '/seed-jr.jpg',
+          width: 250,
+          height: 250,
+          alt: "Sample - website"
+        }
+      ],
+      ...seoEN.SEO,
+    },
+  }
+}
+
 
 export default async function RootLayout({
   children,

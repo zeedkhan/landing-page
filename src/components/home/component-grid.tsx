@@ -5,9 +5,10 @@ import { useDemoModal } from "@/components/home/demo-modal";
 import Popover from "@/components/shared/popover";
 import Tooltip from "@/components/shared/tooltip";
 import { ChevronDown } from "lucide-react";
+import { ContentProps } from "@/lib/locale";
 
-export default function ComponentGrid() {
-  const { DemoModal, setShowDemoModal } = useDemoModal();
+export default function ComponentGrid({ content }: { content: ContentProps }) {
+  const { DemoModal, setShowDemoModal } = useDemoModal({ content });
   const [openPopover, setOpenPopover] = useState(false);
   return (
     <div className="grid grid-cols-1 gap-5 md:grid-cols-3">

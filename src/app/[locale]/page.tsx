@@ -9,6 +9,8 @@ import Contact from "@/components/shared/contact";
 import Slider from "@/components/slider";
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { Service } from "@/lib/mock-service";
+import { ContentProps } from "@/lib/locale";
 
 
 type Props = {
@@ -23,7 +25,7 @@ interface FeatureProps {
   large?: boolean;
   extraClass?: string;
   demo?: ReactElement;
-  content?: any
+  content: ContentProps
 }
 
 
@@ -32,50 +34,63 @@ export default function Home({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
 
   const t = useTranslations("IndexPage");
-
+  const products = useTranslations("IndexPage.products");
+  const services = useTranslations("IndexPage.services");
+  const productT: {
+    productColumnKey: string[];
+    productsDetail: Service[];
+  } = {
+    productColumnKey: products.raw("productColumnKey"),
+    productsDetail: products.raw("productsDetail"),
+  };
 
   const features: FeatureProps[] = [
     {
-      title: t.raw("service1.head"),
+      title: services.raw("service1.head"),
       description:
         truncate(
-          t.raw("service1.desc"),
+          services.raw("service1.desc"),
           100
         ),
       extraClass: "h-fit",
       large: true,
-      content: t.raw("service1")
+      // @ts-ignore
+      content: services.raw("service1")
     },
     {
-      title: t.raw("mockSEO.head"),
+      title: services.raw("mockSEO.head"),
       description:
         truncate(
-          t.raw("mockSEO.desc"),
+          services.raw("mockSEO.desc"),
           100
         ),
       extraClass: "h-60",
-      content: t.raw("mockSEO")
+      // @ts-ignore
+      content: services.raw("mockSEO")
     },
     {
-      title: t.raw("service1.head"),
+      title: services.raw("service1.head"),
       description:
         truncate(
-          t.raw("service1.desc"),
+          services.raw("service1.desc"),
           100
         ),
       extraClass: "h-fit",
-      content: t.raw("service1")
+      large: false,
+      // @ts-ignore
+      content: services.raw("service1")
     },
     {
-      title: t.raw("service2.head"),
+      title: services.raw("service2.head"),
       description:
         truncate(
-          t.raw("service2.desc"),
+          services.raw("service2.desc"),
           100
         ),
       extraClass: "h-fit",
       large: true,
-      content: t.raw("service2")
+      // @ts-ignore
+      content: services.raw("service2")
     },
   ];
 
@@ -188,9 +203,9 @@ export default function Home({ params: { locale } }: Props) {
 
 
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {features.map(({ title, description, demo, large, extraClass, content }) => (
+        {features.map(({ title, description, demo, large, extraClass, content }, index) => (
           <Card
-            key={title}
+            key={title + index}
             title={title}
             description={description}
             extraClass={extraClass}
@@ -212,10 +227,9 @@ export default function Home({ params: { locale } }: Props) {
 
       <div className="my-10 w-full max-w-screen-xl animate-fade-up px-5 xl:px-0">
 
-        <Slider />
+        <Slider products={productT} />
       </div>
 
     </>
   );
 }
-
